@@ -1,0 +1,44 @@
+/* Réinitialisation de la mise en page par défaut et styles de base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styles du menu */
+  nav {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  li {
+    padding: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #555;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Contenu principal */
+  main {
+    padding: 20px;
+  }
+  

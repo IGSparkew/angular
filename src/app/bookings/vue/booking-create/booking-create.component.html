@@ -1,1 +1,35 @@
-<p>booking-create works!</p>
+<form action="" method="post">
+    <div>
+        <label for="NomSeance"></label>
+        <input type="text" name="nomSeance" id="NomSeance" placeholder="Yoga">
+    </div>
+    <div>
+        <label for="Emplacement"></label>
+        <select name="Emplacement" id="Emplacement">
+            <option value="1">Lyon</option>
+            <option value="2">Marseille</option>
+            <option value="3">Paris</option>
+        </select>
+    </div>
+    <div>
+        <label for="Date"></label>
+        <input type="date" name="Date" id="Date">
+    </div>
+    <div>
+        <label for="Heure"></label>
+        <input type="time" name="Heure" id="Heure">
+    </div>
+    <div>
+        <label for="coach"></label>
+        <select name="coach" id="coach">
+            <option value="1">David</option>
+            <option value="2">Louis</option>
+            <option value="3">Jean-Pierre</option>
+        </select>
+    </div>
+    <div>
+        <label for="description"></label>
+        <input type="text" name="description" id="description">
+    </div>
+    <input type="submit" value="Create">
+</form>

@@ -8,10 +8,11 @@ import { RoomCreateComponent } from './rooms/vue/room-create/room-create.compone
 import { BookingCreateComponent } from './bookings/vue/booking-create/booking-create.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './data.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [AppComponent, DashboardComponent],
-    imports: [BrowserModule, AppRoutingModule, HttpClientInMemoryWebApiModule.forRoot(DataService)],
+    imports: [BrowserModule, AppRoutingModule, HttpClientInMemoryWebApiModule.forRoot(DataService),FormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })

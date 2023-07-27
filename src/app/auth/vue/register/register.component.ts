@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../domain/user';
 import { IAuthDisplayService } from '../../port/auth-display.service.interface';
+import { AuthDisplayService } from '../../data/facades/auth-display.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
   isRegistred:boolean = false;
   submited:boolean = false;
 
-  constructor(private authDisplayService: IAuthDisplayService) { }
+  constructor(private authDisplayService: AuthDisplayService) { }
 
 
   onSubmit() {

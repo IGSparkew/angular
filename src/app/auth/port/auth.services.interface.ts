@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
 import { User } from "../domain/user";
 
+
 export interface IAuthService {
 
     getUsers(): Observable<User[]>;

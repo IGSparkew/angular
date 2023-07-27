@@ -7,6 +7,7 @@ import { DataService } from '../data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './data/services/auth.service';
 import { AuthDisplayService } from './data/facades/auth-display.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,7 @@ import { AuthDisplayService } from './data/facades/auth-display.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientInMemoryWebApiModule.forFeature(DataService),
     HttpClientModule
   ],

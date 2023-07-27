@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { IAuthService } from '../../port/auth.services.interface';
 import { IAuthDisplayService } from '../../port/auth-display.service.interface';
 import { User } from '../../domain/user';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthDisplayService implements IAuthDisplayService {
 
-  constructor(private authService: IAuthService) { }
+  constructor(private authService: AuthService) { }
 
    register(user: User): boolean {
     if(!user.firstname || !user.lastname || !user.password || !user.email) {

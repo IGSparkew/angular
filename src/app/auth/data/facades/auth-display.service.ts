@@ -4,13 +4,14 @@ import { IAuthDisplayService } from '../../port/auth-display.service.interface';
 import { User } from '../../domain/user';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/domain/local-storage.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthDisplayService implements IAuthDisplayService {
   private authenticated: boolean = false;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private localStorageService: LocalStorageService) {}
 
 
   login(email?: string, password?: string): Observable<User> {
@@ -21,10 +22,9 @@ export class AuthDisplayService implements IAuthDisplayService {
       this.authService.getUsers().subscribe((users) => {
         const userFinded = users.find((user) => user.email === email && user.password === password);
         if (userFinded) {
-          setTimeout(() => {
-            this.authenticated = true;
+      
+            this.localStorageService.setUser(userFinded.id);
             userFind.next(userFinded);
-          }, 1000);
         }
         userFind.complete();
       })  

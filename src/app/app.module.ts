@@ -8,7 +8,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
-import { AuthGuard } from './auth/guard/auth.guard';
+import { AuthGuard } from './core/domain/auth.guard';
 
 @NgModule({
     declarations: [AppComponent, DashboardComponent],

@@ -11,6 +11,18 @@ import { Observable } from 'rxjs';
 export class AuthDisplayService implements IAuthDisplayService {
     constructor(private authService: AuthService) {}
 
+  login(email?: string, password?: string): Observable<User> {
+    if (!email || !password) {
+      throw new Error('email and password not defined');
+    }
+    return new Observable<User>((userFind) => {
+      this.authService.getUsers().subscribe((users) => {
+        userFind.next(users.find((user) => user.email === email && user.password === password));
+        userFind.complete();
+      })  
+    })
+  }
+
     register(user: User): Observable<boolean> {
         if (
             !user.firstname ||

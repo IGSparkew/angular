@@ -1,12 +1,31 @@
 import { Injectable } from '@angular/core';
 import { IAuthService } from '../../port/auth.services.interface';
+import { IAuthDisplayService } from '../../port/auth-display.service.interface';
+import { User } from '../../domain/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthDisplayService {
+export class AuthDisplayService implements IAuthDisplayService {
 
   constructor(private authService: IAuthService) { }
+
+   register(user: User): boolean {
+    if(!user.firstname || !user.lastname || !user.password || !user.email) {
+      throw new Error("User not defined");
+    }
+    let userWasCreated: boolean = false;
+   this.authService.createUser(user).subscribe(
+      (createdUser: User) => { 
+        userWasCreated = true;
+      },
+      (error)=> {
+        throw new Error("User was not created");
+      }
+    )
+
+    return userWasCreated;
+  }
 
   
 }

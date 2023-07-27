@@ -80,3 +80,7 @@ L'utilisation de services pour gérer les opérations liées aux données, comme
 En adoptant cette approche modulaire et en suivant le Smart/Dumb Pattern, notre application bénéficiera d'une structure claire, facilitant ainsi la collaboration entre les développeurs et la maintenance du code. De plus, cette conception facilitera également la mise en œuvre de nouvelles fonctionnalités et l'ajout de nouvelles pages sans perturber l'ensemble de l'application.
 
 En somme, cette approche de conception bien réfléchie nous permettra de créer une application Angular robuste et conviviale, répondant aux besoins de nos utilisateurs et offrant une expérience utilisateur optimale tout en garantissant une base solide pour un développement futur sans encombre.
+
+## Github
+
+``` https://github.com/IGSparkew/angular ```

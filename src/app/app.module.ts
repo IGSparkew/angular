@@ -9,6 +9,7 @@ import { DataService } from './data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './core/domain/auth.guard';
+import { RoomModule } from './rooms/room.module';
 
 @NgModule({
     declarations: [AppComponent, DashboardComponent],
@@ -16,7 +17,8 @@ import { AuthGuard } from './core/domain/auth.guard';
         AppRoutingModule, 
         HttpClientInMemoryWebApiModule.forRoot(DataService),
         FormsModule,
-        AuthModule
+        AuthModule,
+        RoomModule
     ],
     providers: [AuthGuard],
     bootstrap: [AppComponent],

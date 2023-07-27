@@ -1,1 +1,7 @@
-<p>rooms-list works!</p>
+<ul>
+    <li *ngFor="let salle of salles">
+      <h2>{{ salle.name }}</h2>
+      <p><strong>Address:</strong> {{ salle.adress }}</p>
+      <p><strong>Hours:</strong> {{ salle.hours }}</p>
+    </li>
+  </ul>

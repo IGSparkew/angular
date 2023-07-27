@@ -12,6 +12,7 @@ import { RoomCreateComponent } from './rooms/vue/room-create/room-create.compone
 import { RoomDetailComponent } from './rooms/vue/room-detail/room-detail.component';
 import { RoomEditComponent } from './rooms/vue/room-edit/room-edit.component';
 import { RoomsListComponent } from './rooms/vue/rooms-list/rooms-list.component';
+import { AuthGuard } from './auth/guard/auth.guard';
 
 // Importez les composants pour lesquels vous souhaitez définir des routes
 
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'rooms/:id', component: RoomDetailComponent },
   { path: 'rooms/create', component: RoomCreateComponent },
   { path: 'rooms/edit/:id', component: RoomEditComponent },
-  { path: 'bookings', component: BookingsListComponent },
+  { path: 'bookings', component: BookingsListComponent, canActivate: [AuthGuard] },
   { path: 'bookings/:id', component: BookingDetailComponent },
   { path: 'bookings/create', component: BookingCreateComponent },
 ];

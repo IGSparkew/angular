@@ -3,6 +3,7 @@ import { User } from '../../domain/user';
 import { AuthDisplayService } from '../../data/facades/auth-display.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent {
   });
 
 
-  constructor(private authDisplayService: AuthDisplayService) { }
+  constructor(private authDisplayService: AuthDisplayService, private router: Router) { }
 
 
   onSubmit() {
@@ -31,7 +32,8 @@ export class RegisterComponent {
 
     this.authDisplayService.register(this.newUser).subscribe((response) => {
       if(response) {
-        Swal.fire('User created', '', 'success')
+        Swal.fire('User created', '', 'success');
+        this.router.navigate(['/login'],  { skipLocationChange: true });
       } else {
         Swal.fire('User not registred', '', 'error');
       }

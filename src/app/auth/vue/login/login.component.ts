@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../../domain/user';
 import { AuthDisplayService } from '../../data/facades/auth-display.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
     password: new FormControl('',[Validators.required]),
   });
 
-  constructor(private authDisplayService: AuthDisplayService) { }
+  constructor(private authDisplayService: AuthDisplayService, private router: Router) { }
 
   onSubmit() {
     const email = this.loginForm.get('email')!.value ?? undefined;
@@ -26,7 +27,8 @@ export class LoginComponent {
     this.authDisplayService.login(email, password).subscribe(
       (userFind) => {
         if(userFind) {
-          Swal.fire(`Bienvenu(e) ${userFind.firstname} ${userFind.lastname}`, 'success')
+          Swal.fire(`Bienvenu(e) ${userFind.firstname} ${userFind.lastname}`, 'success');
+          this.router.navigate(['/bookings']);
         } else {
           Swal.fire('User not registred', '', 'error');
         }

@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class AuthDisplayService implements IAuthDisplayService {
-    constructor(private authService: AuthService) {}
+  private authenticated: boolean = false;
+  constructor(private authService: AuthService) {}
+
 
   login(email?: string, password?: string): Observable<User> {
     if (!email || !password) {
@@ -17,7 +19,13 @@ export class AuthDisplayService implements IAuthDisplayService {
     }
     return new Observable<User>((userFind) => {
       this.authService.getUsers().subscribe((users) => {
-        userFind.next(users.find((user) => user.email === email && user.password === password));
+        const userFinded = users.find((user) => user.email === email && user.password === password);
+        if (userFinded) {
+          setTimeout(() => {
+            this.authenticated = true;
+            userFind.next(userFinded);
+          }, 1000);
+        }
         userFind.complete();
       })  
     })
@@ -42,5 +50,14 @@ export class AuthDisplayService implements IAuthDisplayService {
             userWasCreated.complete();
         });
         });
+    }
+
+    isAuthenticated(): boolean {
+      return this.authenticated;
+    }
+
+    logout(): void {
+      // Implement your logout logic here.
+      this.authenticated = false;
     }
 }

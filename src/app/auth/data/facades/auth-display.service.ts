@@ -16,14 +16,16 @@ export class AuthDisplayService implements IAuthDisplayService {
       throw new Error("User not defined");
     }
     let userWasCreated: boolean = false;
-   this.authService.createUser(user).subscribe(
-      (createdUser: User) => { 
+    this.authService.createUser(user).subscribe(
+      response => {
+        if (response) {
         userWasCreated = true;
-      },
-      (error)=> {
+         return userWasCreated;
+        } else {
         throw new Error("User was not created");
-      }
-    )
+
+        } 
+      });
 
     return userWasCreated;
   }

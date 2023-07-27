@@ -1,8 +1,8 @@
-<form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="newUser.firstname" name="firstname" placeholder="prénom">
-    <input type="text" [(ngModel)]="newUser.lastname" name="name" placeholder="nom">
-    <input type="text" [(ngModel)]="newUser.email" name="email" placeholder="Mail">
-    <input type="password" [(ngModel)]="newUser.password" name="password" placeholder="Mot de passe">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input type="text"  name="firstname" formControlName="firstname" placeholder="prénom">
+    <input type="text"  name="name" formControlName="lastname" placeholder="nom">
+    <input type="text"   name="email" formControlName="email" placeholder="Mail">
+    <input type="password" name="password" formControlName="password" placeholder="Mot de passe">
     <button type="submit">S'inscrire</button>
 </form>
   

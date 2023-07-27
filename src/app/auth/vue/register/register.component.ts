@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../../domain/user';
 import { AuthDisplayService } from '../../data/facades/auth-display.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -18,22 +19,24 @@ export class RegisterComponent {
     password: new FormControl('',[Validators.required]),
   });
 
-  isRegistred:boolean = false;
-  submited:boolean = false;
 
   constructor(private authDisplayService: AuthDisplayService) { }
 
 
   onSubmit() {
-    this.submited = true;
     this.newUser.email = this.registerForm.get('email')!.value ?? undefined;
     this.newUser.firstname = this.registerForm.get('firstname')!.value ?? undefined;
     this.newUser.lastname = this.registerForm.get('lastname')!.value ?? undefined;
     this.newUser.password = this.registerForm.get('password')!.value ?? undefined;
 
-    console.log(this.newUser);
-    this.isRegistred = this.authDisplayService.register(this.newUser);
-    console.log(this.isRegistred);
+    this.authDisplayService.register(this.newUser).subscribe((response) => {
+      if(response) {
+        Swal.fire('User created', '', 'success')
+      } else {
+        Swal.fire('User not registred', '', 'error');
+      }
+
+    });
   }
 
 
